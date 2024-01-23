@@ -72,9 +72,10 @@ router.post("/login", (req, res) => {
 })
 
 // Logout of Session
-router.get("/logout", (req, res) => {
-    req.session.destroy();
-    res.send("logged out!")
+router.get("/logout/", (req, res) => {
+    console.log(req);
+    // req.session.destroy();
+    // res.send("logged out!")
 })
 
 // Delete User
