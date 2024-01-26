@@ -73,6 +73,39 @@ router.delete("/delete/:id", (req, res) => {
 });
 
 // Show all the comments in a post
+router.get("/post-comments/:id", (req, res) => {
+    Comment.findAll({
+        include: [User, Post],
+        where: {
+            PostId: req.params.id
+        }
+    }).then((dbComments) => {
+        res.json(dbComments);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            msg: `Something went wrong :(`,
+            err
+        })
+    })
+});
 
+// Show all the comments in a post
+router.get("/logged-comments", (req, res) => {
+    Comment.findAll({
+        include: [Post],
+        where: {
+            UserId: req.session.user.id
+        }
+    }).then((dbComments) => {
+        res.json(dbComments);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            msg: `Something went wrong :(`,
+            err
+        })
+    })
+});
 
 module.exports = router;
