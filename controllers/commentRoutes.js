@@ -18,7 +18,7 @@ router.get(`/`, (req, res) => {
 });
 
 // Show by ID
-router.get("/:id", (req, res) => {
+router.get("/find/:id", (req, res) => {
     Comment.findByPk(req.params.id, {
         include: [User, Post]
     }).then(dbComment => {
@@ -71,5 +71,8 @@ router.delete("/delete/:id", (req, res) => {
         res.status(500).json({ msg: "oh no!", err })
     })
 });
+
+// Show all the comments in a post
+
 
 module.exports = router;

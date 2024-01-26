@@ -17,7 +17,7 @@ router.get(`/`, (req, res) => {
 });
 
 // Show by ID
-router.get("/:id", (req, res) => {
+router.get("/find/:id", (req, res) => {
     User.findByPk(req.params.id, {
         include: [Post, Comment]
     }).then(dbUser => {
@@ -73,9 +73,8 @@ router.post("/login", (req, res) => {
 
 // Logout of Session
 router.get("/logout/", (req, res) => {
-    console.log(req);
-    // req.session.destroy();
-    // res.send("logged out!")
+    req.session.destroy();
+    res.send("logged out!")
 })
 
 // Delete User

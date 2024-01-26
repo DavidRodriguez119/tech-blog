@@ -18,7 +18,7 @@ router.get(`/`, (req, res) => {
 });
 
 // Show by ID
-router.get("/:id", (req, res) => {
+router.get("/find/:id", (req, res) => {
     Post.findByPk(req.params.id, {
         include: [User, Comment]
     }).then(dbPost => {
@@ -71,6 +71,24 @@ router.delete("/delete/:id", (req, res) => {
     }).catch(err => {
         console.log(err)
         res.status(500).json({ msg: "oh no!", err })
+    })
+});
+
+// Show all the posts of the logged in user 
+router.get("/logged/posts", (req, res) => {
+    Post.findAll({
+        include: [User, Comment],
+        where: {
+            UserId: req.session.user.id
+        }
+    }).then((dbPosts) => {
+        res.json(dbPosts);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json({
+            msg: `Something went wrong :(`,
+            err
+        })
     })
 });
 
