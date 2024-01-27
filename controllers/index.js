@@ -23,7 +23,11 @@ router.get(`/`, (req, res) => {
 
 // Dashboard pageBreakAfter: 
 router.get(`/dashboard`, (req, res) => {
-    res.render("dashboard");
+    if(req.session.user){
+      res.render("dashboard");
+    } else {
+      res.render("login")
+    }    
 });
 
 // Login Page 
