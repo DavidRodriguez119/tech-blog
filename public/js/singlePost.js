@@ -1,8 +1,11 @@
 const postTitle = document.querySelector(`.post-title`);
 const postInfo = document.querySelector(`.post-info`);
 const postContent = document.querySelector(`.post-content`);
-const addComment = document.getElementById(`add-comment`);
+const addCommentButton = document.getElementById(`add-comment-button`);
+const addCommentForm = document.getElementById(`add-comment-form`);
 let postData;
+
+addCommentForm.style.display = `none`;
 
 const renderPost = () => {
     // get post id
@@ -20,11 +23,26 @@ const renderPost = () => {
             postTitle.textContent = `${postData.title}`
             postInfo.textContent = `Posted by ${postData.User.username} on ${date}`;
             postContent.textContent = postData.content
+            renderComments(postData);
         })
         .catch(error => {
             console.error('Error trying to fetch posts data', error);           
     });
 }
+
+const renderComments = (comments) => {
+    for(let comment of comments.Comments){
+        const commentText = document.createElement(`p`);
+        commentText.textContent = comment.content;
+        document.querySelector(`.comment-container`).appendChild(commentText);
+    };
+};
+
+addCommentButton.addEventListener(`click`, () => {
+    addCommentForm.style.display = `block`;
+});
+
+
 
 renderPost();
 
