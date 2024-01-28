@@ -34,10 +34,8 @@ router.get(`/dashboard`, (req, res) => {
 router.get("/login", (req, res) => {
   if (req.session.user) {
     res.redirect("/")
-    console.log("homepage")
   } else {
     res.render("login")
-    console.log("Login")
   }
 })
 
