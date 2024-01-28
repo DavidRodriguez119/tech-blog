@@ -1,0 +1,53 @@
+:root {
+    --primary-color: rgb(44, 37, 27);
+    --secondary-color: rgb(160, 241, 160);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: var(--primary-color);
+    height: auto;
+    position: relative;
+    color: var(--secondary-color);
+    padding: 20px;
+}
+
+a{
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin: 15px;
+    font-size: larger;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+a:active{
+    color: white;
+    font-weight: bold;
+}
+
+h1{
+    margin: 20px;
+    margin-left: 55px;
+    color: var(--primary-color);
+    border: solid 2px var(--secondary-color);
+    width: fit-content;
+    padding: 10px 35px;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px grey;
+}
+
+main {
+    background-color:var(--secondary-color);
+    height: 85vh;
+    overflow-y: auto;
+    color: var(--primary-color);
+}
+
