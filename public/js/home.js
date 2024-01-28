@@ -1,16 +1,18 @@
-let postContainer = document.getElementById(`post-container`);
+let postContainer = document.querySelector(`.post-container`);
 let allPosts;
+let posts;
+let clickedId;
 
 // get all the post in the db
 fetch(`api/post`)
-.then(response => response.json())
-.then(data => {
-    allPosts = data;
-    console.log(allPosts);
-    renderPosts()
-})
-.catch(error => {
-    console.error('Error trying to fetch boardgame data', error);
+    .then(response => response.json())
+    .then(data => {
+        allPosts = data;
+        console.log(allPosts);
+        renderPosts()
+    })
+    .catch(error => {
+        console.error('Error trying to fetch posts data', error);
 });
 
 const renderPosts = () => {
@@ -21,6 +23,7 @@ const renderPosts = () => {
         // Create & append the outer div with class "post"
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
+        postDiv.setAttribute(`id`, `${post.id}`)
         postContainer.appendChild(postDiv)
         // Create & append the inner div with class "post-header"
         const postHeaderDiv = document.createElement('div');
@@ -40,6 +43,28 @@ const renderPosts = () => {
         const postContent = document.createElement('p');
         postContent.classList.add('post-content');
         postContent.textContent = `${post.content}`;
-        postContainer.appendChild(postContent)
+        postDiv.appendChild(postContent)
     }
+    posts = document.querySelectorAll(`.post`);
+
+    posts.forEach(post => {
+        post.addEventListener(`click`, event => {
+            if(event.target.parentNode.className === `post-header`){
+                clickedId = event.target.parentNode.parentNode.id
+                displayPost(clickedId)
+            } else {
+                clickedId = event.target.parentNode.id
+                displayPost(clickedId)
+            };      
+        })
+    });
+};
+
+const displayPost = (id) => {
+    if(id == ``){
+        return
+    } else{
+        localStorage.setItem(`wantedPostId`, id);
+        location.replace(`/singlePost`);
+    };
 };
