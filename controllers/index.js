@@ -47,8 +47,12 @@ router.get(`/logout`, (req, res) => {
 });
 
 // Single Post Page 
-router.get(`/singlePost`, (req, res) => {
-  res.render(`singlePost`)
+router.get(`/singlePost/:id`, (req, res) => {
+  if(req.session.user){
+    res.render(`singlePost`)
+  } else {
+    res.render("login")
+  }    
 });
 
 module.exports = router;

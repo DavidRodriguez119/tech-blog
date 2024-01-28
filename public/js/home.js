@@ -65,6 +65,6 @@ const displayPost = (id) => {
         return
     } else{
         localStorage.setItem(`wantedPostId`, id);
-        location.replace(`/singlePost`);
+        location.replace(`/singlePost/${id}`);
     };
 };
