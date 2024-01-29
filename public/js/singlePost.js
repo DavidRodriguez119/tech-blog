@@ -4,6 +4,7 @@ const postContent = document.querySelector(`.post-content`);
 const addCommentButton = document.getElementById(`add-comment-button`);
 const addCommentForm = document.getElementById(`add-comment-form`);
 const submitComment = document.getElementById(`submit-comment`);
+const commentInput = document.getElementById(`comment-input`)
 let postData;
 
 const renderPost = () => {
@@ -43,7 +44,25 @@ addCommentButton.addEventListener(`click`, () => {
 
 submitComment.addEventListener(`click`, (event) => {
     event.preventDefault();
-    
+    const wantedData = localStorage.getItem(`wantedPostId`);
+    const wantedId = JSON.parse(wantedData);
+    fetch(`/api/comment/create/${wantedId}`, {
+        method: `POST`,
+        body: JSON.stringify(
+            {
+                content: commentInput.value,
+            }
+        ),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => {
+        if (res.ok) {
+            location.reload();
+        } else {
+            console.log(`something went wrong :(`);
+        };
+    });
 })
 
 

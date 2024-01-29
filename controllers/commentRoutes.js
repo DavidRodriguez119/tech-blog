@@ -33,9 +33,11 @@ router.get("/find/:id", (req, res) => {
 });
 
 // Create Post
-router.post("/", (req, res) => {
+router.post("/create/:postId", (req, res) => {
     Comment.create({
         content: req.body.content,
+        UserId: req.session.user.UserId,
+        PostId: req.params.postId
     }).then(newComment => {
         res.json(newComment)
     }).catch(err => {

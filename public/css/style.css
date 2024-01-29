@@ -92,10 +92,14 @@ main {
 }
 
 .comment-container{
+    width: 75%;
+}
+
+.comment-container p{
     border: solid var(--primary-color) 4px;
     border-top: 35px solid var(--primary-color);    
     margin: 15px 0px;
-    width: 80%;
+    width: 100%;
     padding: 15px;
     height: max-content;
 }
@@ -186,4 +190,6 @@ button{
 .spacer{
     width: 100%;
     height: 15px;
+    display: block;
+    margin: 40px;
 }
