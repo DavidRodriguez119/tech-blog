@@ -3,9 +3,8 @@ const postInfo = document.querySelector(`.post-info`);
 const postContent = document.querySelector(`.post-content`);
 const addCommentButton = document.getElementById(`add-comment-button`);
 const addCommentForm = document.getElementById(`add-comment-form`);
+const submitComment = document.getElementById(`submit-comment`);
 let postData;
-
-addCommentForm.style.display = `none`;
 
 const renderPost = () => {
     // get post id
@@ -42,6 +41,10 @@ addCommentButton.addEventListener(`click`, () => {
     addCommentForm.style.display = `block`;
 });
 
+submitComment.addEventListener(`click`, (event) => {
+    event.preventDefault();
+    
+})
 
 
 renderPost();
