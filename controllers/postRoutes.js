@@ -34,9 +34,11 @@ router.get("/find/:id", (req, res) => {
 
 // Create Post
 router.post("/", (req, res) => {
+    console.log(req.session.user);
     Post.create({
         title: req.body.title,
-        content: req.body.content
+        content: req.body.content,
+        UserId: req.session.user.id,
     }).then(newPost => {
         res.json(newPost)
     }).catch(err => {

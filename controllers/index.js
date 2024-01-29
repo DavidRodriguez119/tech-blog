@@ -53,4 +53,9 @@ router.get(`/singlePost/:id`, (req, res) => {
   }    
 });
 
+// Single User Post pageBreakAfter: 
+router.get(`/singleUserPost/:id`, (req, res) => {
+  res.render(`singleUserPost`)
+});
+
 module.exports = router;
