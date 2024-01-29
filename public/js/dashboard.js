@@ -1,7 +1,11 @@
-let postContainer = document.querySelector(`.post-container`);
+const postContainer = document.querySelector(`.post-container`);
 let allUserPosts;
 let posts;
 let clickedId;
+const newPostButton = document.getElementById(`new-post-button`);
+const addPostForm = document.getElementById(`add-post-form`);
+const dashboardPage = document.getElementById(`dashboard-page`);
+const addPostButton = document.getElementById(`add-post-button`);
 
 // get all the logged user's post 
 fetch(`api/post/logged/posts`)
@@ -64,8 +68,32 @@ const displayPost = (id) => {
     if(id == ``){
         return
     } else{
-        console.log(id);
-        // localStorage.setItem(`wantedPostId`, id);
-        // location.replace(`/singlePost/${id}`);
+        localStorage.setItem(`wantedUserPostId`, id);
+        location.replace(`/singleUserPost/${id}`);
     };
 };
+
+newPostButton.addEventListener(`click`, () => {
+    dashboardPage.style.display = `none`;
+    addPostForm.style.display = `block`;
+})
+
+addPostButton.addEventListener(`click`, (event) => {
+    event.preventDefault();
+    
+    // create post with the form info
+    // check that the form was filled completelly
+    const postTitleInput = document.getElementById(`post-title-input`);
+    const postContentInput = document.getElementById(`post-content-input`);
+    if(postTitleInput.value == ``){
+        alert(`Please fill in the title input`);
+        return
+    } else if (postContentInput.value == ``){
+        alert(`Please fill in the content input`);
+        return
+    } else {
+        fetch(``)
+    }
+
+    // addPostForm.style.display = `none`;
+})

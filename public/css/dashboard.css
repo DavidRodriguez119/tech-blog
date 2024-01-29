@@ -31,3 +31,31 @@
     background-color: darkgreen;
     color: white;
 }
+
+#add-post-form{
+    display: none;
+    margin: 20px;
+    width: 85%;
+}
+
+.form-content{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+#add-post-button{
+    padding: 15px;
+    width: max-content;
+    margin-left: 45%;
+    border-radius: 4px;
+}
+
+#add-post-button:hover{
+    background-color: darkgreen;
+    color: white;
+}
+
+#post-content-input{
+    height: 60px;
+}

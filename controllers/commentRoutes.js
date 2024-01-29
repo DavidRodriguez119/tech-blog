@@ -36,7 +36,7 @@ router.get("/find/:id", (req, res) => {
 router.post("/create/:postId", (req, res) => {
     Comment.create({
         content: req.body.content,
-        UserId: req.session.user.UserId,
+        UserId: req.session.user.id,
         PostId: req.params.postId
     }).then(newComment => {
         res.json(newComment)
