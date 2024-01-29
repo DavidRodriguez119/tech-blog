@@ -92,7 +92,24 @@ addPostButton.addEventListener(`click`, (event) => {
         alert(`Please fill in the content input`);
         return
     } else {
-        fetch(``)
+        fetch(`/api/post/`, {
+            method: `POST`,
+            body: JSON.stringify(
+                {
+                    title: postTitleInput.value,
+                    content: postContentInput.value
+                }
+            ),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            if (res.ok) {
+                location.reload();
+            } else {
+                console.log(`something went wrong :(`);
+            };
+        });
     }
 
     // addPostForm.style.display = `none`;
