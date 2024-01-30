@@ -28,12 +28,13 @@ const renderPost = () => {
         .catch(error => {
             console.error('Error trying to fetch posts data', error);           
     });
-}
+};
 
 const renderComments = (comments) => {
     for(let comment of comments.Comments){
+        const date = comment.createdAt.slice(0,10)
         const commentText = document.createElement(`p`);
-        commentText.textContent = comment.content;
+        commentText.innerHTML = `${comment.content} <br><br> -- ${comment.author}  -- ${date}`;
         document.querySelector(`.comment-container`).appendChild(commentText);
     };
 };
@@ -63,7 +64,7 @@ submitComment.addEventListener(`click`, (event) => {
             console.log(`something went wrong :(`);
         };
     });
-})
+});
 
 
 renderPost();
