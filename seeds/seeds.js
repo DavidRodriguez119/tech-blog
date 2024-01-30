@@ -35,10 +35,12 @@ const postData = [
 
 const commentData = [
     {
-        content: `Not the cleverest post`
+        content: `Not the cleverest post`,
+        author: `david`
     },
     {
-        content: `Really?`
+        content: `Really?`,
+        author: `andres`
     }
 ]
 
