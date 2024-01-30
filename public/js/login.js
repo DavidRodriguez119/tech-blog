@@ -55,7 +55,7 @@ const createUser = async (userObj) => {
         }
     }).then(res => {
         if (res.ok) {
-            location.href = "/";
+            location.reload();
         }
     });
 }
