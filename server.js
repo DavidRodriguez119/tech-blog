@@ -3,6 +3,10 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const allRoutes = require('./controllers');
 const session = require("express-session")
+const cors = require('cors');
+
+// Enable CORS for all routes
+app.use(cors());
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
