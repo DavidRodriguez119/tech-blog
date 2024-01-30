@@ -49,3 +49,4 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 
 ## Deployed Link
+https://dr-tech-blog-227dc87c20ce.herokuapp.com/
