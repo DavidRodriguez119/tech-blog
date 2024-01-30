@@ -46,7 +46,7 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 ```
 
 ## Screenshot of Deployed Site
-
+![Deployed-Screenshot](./public/assets/deployed-screenshot.png)
 
 ## Deployed Link
 https://dr-tech-blog-227dc87c20ce.herokuapp.com/
