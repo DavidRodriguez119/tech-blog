@@ -1,5 +1,6 @@
 const loginForm = document.querySelector("#login-form");
 const newUserForm = document.querySelector("#new-user-form");
+const changeForm = document.getElementById(`change-form`);
 
 newUserForm.style.display = `none`;
 
@@ -27,3 +28,14 @@ const loginUser = async (userObj) => {
         };
     });
 };
+
+// change form when click 
+changeForm.addEventListener(`click`, () => {
+    if(loginForm.style.display === `none`){
+        loginForm.style.display = `block`;
+        newUserForm.style.display = `none`    
+    } else {
+        loginForm.style.display = `none`;
+        newUserForm.style.display = `block`    
+    }
+})
